@@ -13,6 +13,17 @@ namespace ariel
         primes = other.primes;
     }
 
+    MagicalContainer &MagicalContainer::operator=(const MagicalContainer &other)
+    {
+        if (this != &other)
+        {
+            sizeOfContainer = other.sizeOfContainer;
+            elements = other.elements;
+            primes = other.primes;
+        }
+        return *this;
+    }
+
     MagicalContainer::~MagicalContainer()
     {
         for (auto it = primes.begin(); it != primes.end(); ++it)
