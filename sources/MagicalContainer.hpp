@@ -18,6 +18,9 @@ namespace ariel
 
     public:
         MagicalContainer();
+        MagicalContainer(const MagicalContainer &other);
+        MagicalContainer& operator=(const MagicalContainer& other);
+        ~MagicalContainer();
         void addElement(int element);
         void removeElement(int element);
         bool isPrime(int num) const;
@@ -32,6 +35,7 @@ namespace ariel
         public:
             AscendingIterator(MagicalContainer &container);
             AscendingIterator(const AscendingIterator &other);
+            ~AscendingIterator();
             AscendingIterator begin() ;
             AscendingIterator end();
             bool operator==(const AscendingIterator& other) const;
@@ -52,6 +56,7 @@ namespace ariel
         public:
             SideCrossIterator(MagicalContainer &container);
             SideCrossIterator(const SideCrossIterator &other);
+            ~SideCrossIterator();
             SideCrossIterator begin() ;
             SideCrossIterator end();
             bool operator==(const SideCrossIterator& other) const;
@@ -72,6 +77,7 @@ namespace ariel
             public:
             PrimeIterator(MagicalContainer &container);
             PrimeIterator(const PrimeIterator &other);
+            ~PrimeIterator();
             PrimeIterator begin() ;
             PrimeIterator end();
             bool operator==(const PrimeIterator& other) const;

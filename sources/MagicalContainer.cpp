@@ -7,6 +7,20 @@ namespace ariel
     {
     }
 
+    MagicalContainer::MagicalContainer(const MagicalContainer &other) : sizeOfContainer(other.sizeOfContainer)
+    {
+        elements = other.elements;
+        primes = other.primes;
+    }
+
+    MagicalContainer::~MagicalContainer()
+    {
+        for (auto it = primes.begin(); it != primes.end(); ++it)
+        {
+            delete *it;
+        }
+    }
+
     // Add an element to the container
     void MagicalContainer::addElement(int element)
     {
@@ -75,6 +89,10 @@ namespace ariel
 
     // AscendingIterator: Copy Constructor
     MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator &other) : container(other.container), currentLocationAsc(other.currentLocationAsc)
+    {
+    }
+
+    MagicalContainer::AscendingIterator::~AscendingIterator()
     {
     }
 
@@ -161,6 +179,10 @@ namespace ariel
     }
 
     MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator &other) : container(other.container), currentLocationCross(other.currentLocationCross)
+    {
+    }
+
+    MagicalContainer::SideCrossIterator::~SideCrossIterator()
     {
     }
 
@@ -261,6 +283,10 @@ namespace ariel
     }
 
     MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator &other) : container(other.container), currentLocationPrime(other.currentLocationPrime)
+    {
+    }
+
+    MagicalContainer::PrimeIterator::~PrimeIterator()
     {
     }
 
