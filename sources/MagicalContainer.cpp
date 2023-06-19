@@ -6,7 +6,6 @@ namespace ariel
     MagicalContainer::MagicalContainer() : sizeOfContainer(0)
     {
     }
-
     MagicalContainer::MagicalContainer(const MagicalContainer &other) : sizeOfContainer(other.sizeOfContainer)
     {
         elements = other.elements;
@@ -45,7 +44,7 @@ namespace ariel
             primes.insert(it, ptr);
         }
     }
-
+   
     // Remove an element from the container
     void MagicalContainer::removeElement(int element)
     {
@@ -60,9 +59,20 @@ namespace ariel
                 sizeOfContainer--;
                 elements.erase(std::lower_bound(elements.begin(), elements.end(), element));
                 if (isPrime(element))
-                {
-                    int *ptr = new int(element);
-                    primes.erase(std::lower_bound(primes.begin(), primes.end(), ptr));
+                { // remove from primes vector
+                    for (auto it = primes.begin(); it != primes.end();)
+                    {
+                        if (**it == element)
+                        {
+                            // remove from primes
+                            delete *it;            // delete the heap-allocated integer
+                            it = primes.erase(it); // remove the pointer from the vector
+                        }
+                        else
+                        {
+                            ++it;
+                        }
+                    }
                 }
             }
         }
